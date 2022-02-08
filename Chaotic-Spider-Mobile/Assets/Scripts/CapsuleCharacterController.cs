@@ -10,8 +10,10 @@ public class CapsuleCharacterController : MonoBehaviour
     public float chargeForce = 0; 
     private float horizontalInput, verticalInput, mouseHorizontal;
     private bool isGrounded = true;
-    private bool canCharge = true; 
-    
+    private bool canCharge = true;
+
+    float mousePosX;
+    float mousePosY;
 
     private Rigidbody rb;
     //private Animator modelAnimator;
@@ -19,6 +21,7 @@ public class CapsuleCharacterController : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody>();
+       
         //modelAnimator = GetComponentInChildren<Animator>();
         
     }
@@ -27,8 +30,11 @@ public class CapsuleCharacterController : MonoBehaviour
     {
         horizontalInput = Input.GetAxis("Horizontal");
         verticalInput = Input.GetAxis("Vertical");
+        mousePosX = Input.mousePosition.x; 
+        mousePosY = Input.mousePosition.y; 
 
         transform.Translate(new Vector3(horizontalInput, 0, verticalInput) * moveSpeed * Time.deltaTime);
+        //transform.Translate(new Vector3(mousePosX, 0, mousePosY) * moveSpeed * Time.deltaTime);
 
         mouseHorizontal = Input.GetAxis("Mouse X");
         transform.Rotate(new Vector3(0, mouseHorizontal, 0) * lookSens * Time.deltaTime);
