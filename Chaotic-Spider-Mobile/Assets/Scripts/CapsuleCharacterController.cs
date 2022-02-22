@@ -36,7 +36,7 @@ public class CapsuleCharacterController : MonoBehaviour
 
         if (Input.GetButton("Move"))
         {   
-            mouseHorizontal = Input.GetAxis("Mouse Y") - Input.GetAxis("Mouse X");
+            mouseHorizontal = Input.GetAxis("Mouse X") - Input.GetAxis("Mouse Y");
 
             transform.Rotate(new Vector3(0, mouseHorizontal, 0) * lookSens * Time.deltaTime);
         }
