@@ -34,23 +34,23 @@ public class CapsuleCharacterController : MonoBehaviour
 
         transform.Translate(new Vector3(horizontalInput, 0, verticalInput) * moveSpeed * Time.deltaTime);
 
-        mouseHorizontal = Input.GetAxis("Mouse X");
-        transform.Rotate(new Vector3(0, mouseHorizontal, 0) * lookSens * Time.deltaTime);
+        if (Input.GetButton("Move"))
+        {   
+            mouseHorizontal = Input.GetAxis("Mouse Y") - Input.GetAxis("Mouse X");
+
+            transform.Rotate(new Vector3(0, mouseHorizontal, 0) * lookSens * Time.deltaTime);
+        }
     }
 
     void FixedUpdate()
     {
-        if (Input.GetButton("Jump") && isGrounded)
+        if (Input.GetButton("Jump"))
         {
-            rb.AddForce(transform.up * jumpForce);
+            Jump(); 
         }
 
-        if(Input.GetButton("Charge") && canCharge)
-        {
-            canCharge = false; 
-            rb.AddForce(transform.forward * chargeForce);
-            StartCoroutine(ChargeTimer());
-        }
+        if (Input.GetButton("Charge"))
+            Charge(); 
     }
 
     public void OnTriggerEnter(Collider other)
@@ -66,6 +66,23 @@ public class CapsuleCharacterController : MonoBehaviour
         if(other.tag == "Ground" || other.tag == "Points")
         {
             isGrounded = false; 
+        }
+    }
+
+    public void Jump()
+    {
+        if (isGrounded)
+        {
+            rb.AddForce(transform.up * jumpForce);
+        }
+    }
+    public void Charge()
+    {
+        if (canCharge)
+        {
+            canCharge = false;
+            rb.AddForce(transform.forward * chargeForce);
+            StartCoroutine(ChargeTimer());
         }
     }
 
