@@ -48,26 +48,9 @@ public class GameManager : MonoBehaviour
         score.text = "Objects Tossed: " + points;
         scoreReport.text = "Objects Tossed: " + points;
 
-        if(Input.GetButtonDown("Submit"))
-        {
-            if (!paused)
-            {
-                Time.timeScale = 0;
-                paused = true; 
-
-                CanvasPauseGroup.gameObject.SetActive(true); 
-                CanvasPlayGroup.gameObject.SetActive(false); 
-            }
-            else
-            {
-                Time.timeScale = 1;
-                paused = false;
-
-                CanvasPauseGroup.gameObject.SetActive(false);
-                CanvasPlayGroup.gameObject.SetActive(true);
-            }
-        }
-
+        if (Input.GetButtonDown("Submit"))
+            PauseGame(); 
+        
         switch (callCount)
         {
             case 3:
@@ -94,7 +77,9 @@ public class GameManager : MonoBehaviour
     {
         SceneManager.LoadScene(1);
     }
-    
+
+   
+
     public void DropDaBOOT()
     {
         if(!deadSpyder)
@@ -103,6 +88,25 @@ public class GameManager : MonoBehaviour
             Instantiate(BOOT, new Vector3(SPYDER.transform.position.x, SPYDER.transform.position.y * range, SPYDER.transform.position.z), Quaternion.identity);
             StartCoroutine(deleteTimer());
             Destroy(GameObject.FindGameObjectWithTag("Boot"));
+        }
+    }
+    public void PauseGame()
+    {
+        if (!paused)
+        {
+            Time.timeScale = 0;
+            paused = true;
+
+            CanvasPauseGroup.gameObject.SetActive(true);
+            CanvasPlayGroup.gameObject.SetActive(false);
+        }
+        else
+        {
+            Time.timeScale = 1;
+            paused = false;
+
+            CanvasPauseGroup.gameObject.SetActive(false);
+            CanvasPlayGroup.gameObject.SetActive(true);
         }
     }
 

@@ -18,28 +18,28 @@ public class CapsuleCharacterController : MonoBehaviour
 
     private Rigidbody rb;
     //private Animator modelAnimator;
+
+    [SerializeField] private joystickScript joystick; 
  
     void Start()
     {
         rb = GetComponent<Rigidbody>();
-       
         //modelAnimator = GetComponentInChildren<Animator>();
-        
     }
 
     void Update()
     {
-        horizontalInput = Input.GetAxis("Horizontal");
+        horizontalInput = Input.GetAxis("Horizontal");  //button input
         verticalInput = Input.GetAxis("Vertical");
 
-        transform.Translate(new Vector3(horizontalInput, 0, verticalInput) * moveSpeed * Time.deltaTime);
-
-        if (Input.GetButton("Move"))
-        {   
-            mouseHorizontal = Input.GetAxis("Mouse X") - Input.GetAxis("Mouse Y");
-
-            transform.Rotate(new Vector3(0, mouseHorizontal, 0) * lookSens * Time.deltaTime);
+        if(joystick.InputDir != Vector2.zero)
+        {
+            horizontalInput = joystick.InputDir.x; //input changed if joystick being dragged
+            verticalInput = joystick.InputDir.y; 
         }
+        
+        transform.Translate(new Vector3(horizontalInput, 0, verticalInput) * moveSpeed * Time.deltaTime);   //translate spider 
+        //transform.rotation = Quaternion.LookRotation(new Vector3(horizontalInput, 0, verticalInput) * moveSpeed * Time.deltaTime * -1);
     }
 
     void FixedUpdate()
