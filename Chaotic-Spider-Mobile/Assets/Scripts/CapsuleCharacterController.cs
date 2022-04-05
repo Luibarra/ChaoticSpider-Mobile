@@ -39,7 +39,15 @@ public class CapsuleCharacterController : MonoBehaviour
         }
         
         transform.Translate(new Vector3(horizontalInput, 0, verticalInput) * moveSpeed * Time.deltaTime);   //translate spider 
-        //transform.rotation = Quaternion.LookRotation(new Vector3(horizontalInput, 0, verticalInput) * moveSpeed * Time.deltaTime * -1);
+
+        /*if (verticalInput > 0)
+        {
+            transform.rotation = Quaternion.LookRotation(new Vector3(horizontalInput, 0, verticalInput) * moveSpeed * Time.deltaTime * -1);
+        }
+        else if (verticalInput < 0)
+        {
+            transform.rotation = Quaternion.LookRotation(new Vector3(horizontalInput, 0, verticalInput) * moveSpeed * Time.deltaTime);
+        }*/
     }
 
     void FixedUpdate()

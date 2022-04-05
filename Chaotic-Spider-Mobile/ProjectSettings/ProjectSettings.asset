@@ -649,7 +649,7 @@ PlayerSettings:
       daydreamIconForeground: {fileID: 0}
       daydreamIconBackground: {fileID: 0}
   cloudServicesEnabled:
-    Collab: 1
+    Collab: 0
     UNet: 1
   luminIcon:
     m_Name: 
@@ -663,10 +663,10 @@ PlayerSettings:
     m_VersionCode: 1
     m_VersionName: 
   apiCompatibilityLevel: 6
-  cloudProjectId: bb5f9f3f-bc46-4acc-821d-fa9ded4ef357
+  cloudProjectId: 90e8499e-5ff4-4c67-bdcd-27a7431d9e89
   framebufferDepthMemorylessMode: 0
-  projectName: DET 260-FinalProject-LAI
-  organizationId: det_2018
+  projectName: ChaoticSpiderRedux
+  organizationId: webluis018
   cloudEnabled: 0
   enableNativePlatformBackendsForNewInputSystem: 0
   disableOldInputManagerSupport: 0

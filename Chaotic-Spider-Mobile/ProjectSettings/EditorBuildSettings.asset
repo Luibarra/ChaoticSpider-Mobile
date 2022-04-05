@@ -14,4 +14,6 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Escape.unity
     guid: 7a69254b272cc344fa79f29505518b99
-  m_configObjects: {}
+  m_configObjects:
+    com.unity.xr.management.loader_settings: {fileID: 11400000, guid: f150ddc25b3cde74b8ad4a72c0eca3ea,
+      type: 2}
