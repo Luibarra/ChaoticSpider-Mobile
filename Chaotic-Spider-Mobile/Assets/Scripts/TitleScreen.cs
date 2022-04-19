@@ -8,7 +8,8 @@ public class TitleScreen : MonoBehaviour
 {
     public Text Highscore;
     public Transform TitleScreenGroup;
-    public Transform OptionsScreenGroup; 
+    public Transform OptionsScreenGroup;
+    public Transform ShopScreenGroup; 
 
     void Start()
     {
@@ -30,6 +31,14 @@ public class TitleScreen : MonoBehaviour
     {
         TitleScreenGroup.gameObject.SetActive(false);
         OptionsScreenGroup.gameObject.SetActive(true);
+        ShopScreenGroup.gameObject.SetActive(false);
+    }
+
+    public void StoreButton()
+    {
+        TitleScreenGroup.gameObject.SetActive(false);
+        OptionsScreenGroup.gameObject.SetActive(false);
+        ShopScreenGroup.gameObject.SetActive(true);
     }
 
     public void ResetScore()
@@ -41,5 +50,6 @@ public class TitleScreen : MonoBehaviour
     {
         TitleScreenGroup.gameObject.SetActive(true);
         OptionsScreenGroup.gameObject.SetActive(false);
+        ShopScreenGroup.gameObject.SetActive(false);
     }
 }
