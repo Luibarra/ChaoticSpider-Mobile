@@ -37,17 +37,8 @@ public class CapsuleCharacterController : MonoBehaviour
             horizontalInput = joystick.InputDir.x; //input changed if joystick being dragged
             verticalInput = joystick.InputDir.y; 
         }
-        
-        transform.Translate(new Vector3(horizontalInput, 0, verticalInput) * moveSpeed * Time.deltaTime);   //translate spider 
 
-        /*if (verticalInput > 0)
-        {
-            transform.rotation = Quaternion.LookRotation(new Vector3(horizontalInput, 0, verticalInput) * moveSpeed * Time.deltaTime * -1);
-        }
-        else if (verticalInput < 0)
-        {
-            transform.rotation = Quaternion.LookRotation(new Vector3(horizontalInput, 0, verticalInput) * moveSpeed * Time.deltaTime);
-        }*/
+        transform.Translate(new Vector3(horizontalInput,0,verticalInput)*moveSpeed*Time.deltaTime * -1); 
     }
 
     void FixedUpdate()
@@ -89,7 +80,7 @@ public class CapsuleCharacterController : MonoBehaviour
         if (canCharge)
         {
             canCharge = false;
-            rb.AddForce(transform.forward * chargeForce);
+            rb.AddForce(new Vector3(horizontalInput, 0, verticalInput) * chargeForce*-1);
             StartCoroutine(ChargeTimer());
         }
     }

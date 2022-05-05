@@ -7,19 +7,17 @@ public class AdManager : MonoBehaviour
 {
     //android: 4687138;
     //apple: 4687139;
-    string gameId = "your_id";
-    bool testMode = false;
+    string gameId = "4687138";
+    //bool testMode = true;
 
-#if UNITY_IOS
-        private string gameId = "4687139";
-#elif UNITY_ANDROID
-        private string gameId = "4687138";
-#endif
+/*#if UNITY_IOS
+    private string gameId = "4687139";
+#endif*/
 
     void Start()
     {
         // Initialize the Ads service:
-        Advertisement.Initialize(gameId);
+        Advertisement.Initialize(gameId);             
         //Advertisement.Initialize(gameId, testMode);
     }
 
@@ -28,11 +26,15 @@ public class AdManager : MonoBehaviour
         // Check if UnityAds ready before calling Show method:
         if (Advertisement.IsReady())
         {
-            Advertisement.Show("ResilientSpider");
+            if(gameId == "4687138")
+                Advertisement.Show("ResilientSpider_");
+            else
+                Advertisement.Show("Rewarded_iOS");
         }
         else
         {
             Debug.Log("Interstitial ad not ready at the moment! Please try again later!");
+            //Debug.Log("Oh no! A nut!");
         }
         //Time.timeScale = 0f;
     }
